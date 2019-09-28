@@ -1,0 +1,5 @@
+book
+dist
+node_modules
+.env
+tmp
