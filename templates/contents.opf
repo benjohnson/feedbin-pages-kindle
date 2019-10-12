@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+    <package xmlns="http://www.idpf.org/2007/opf" version="2.0" unique-identifier="1569684542388">
+
+        <metadata>
+            <dc-metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+                <dc:title>Feedbin Pages</dc:title>
+                <dc:language>en-gb</dc:language>
+                <dc:creator>Feedbin</dc:creator>
+                <dc:publisher>Feedbin</dc:publisher>
+                <dc:subject></dc:subject>
+                <dc:date>2019-9-6</dc:date>
+                <dc:description></dc:description>
+            </dc-metadata>
+
+            <!-- <x-metadata> -->
+            <!--   <output content-type="application/x-mobipocket-subscription-magazine" encoding="utf-8"/> -->
+            <!-- </x-metadata> -->
+
+            <meta content="book-cover-image" name="cover"/>
+        </metadata>
+
+        <manifest>
+            <item href="contents.html" media-type="application/xhtml+xml" id="contents"/>
+            <item href="nav-contents.ncx" media-type="application/x-dtbncx+xml" id="nav-contents"/>
+
+            <% for (entry of entries) { %>
+              <item href="0-<%= entry.id %>.html" media-type="application/xhtml+xml" id="item-0-<%= entry.id %>"/>
+            <% } %>
+        </manifest>
+
+        <spine toc="nav-contents">
+            <itemref idref="contents"/>
+            <% for (entry of entries) { %>
+              <itemref idref="item-0-<%= entry.id %>"/>
+            <% } %>
+        </spine>
+
+        <guide>
+            <reference href="contents.html" type="toc" title="Table of Contents"/>
+        </guide>
+
+    </package>
+</xml>

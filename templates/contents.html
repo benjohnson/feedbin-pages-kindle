@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>Table of Contents</title>
+  </head>
+  <body>
+    <h1>Contents</h1>
+    <h4>Pages</h4>
+    <ul>
+      <% for (entry of entries) { %>
+        <li>
+          <a href="0-<%= entry.id %>.html"><%= entry.title %></a>
+        </li>
+      <% } %>
+    </ul>
+  </body>
+</html>
