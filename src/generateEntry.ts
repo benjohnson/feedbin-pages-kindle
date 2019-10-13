@@ -3,7 +3,8 @@ import fs from 'fs';
 import path from 'path';
 import { URL } from 'url';
 import cheerio from 'cheerio';
-import sanitizeHtml from 'sanitize-html'
+import sanitizeHtml from 'sanitize-html';
+import hyphenopoly from 'hyphenopoly';
 import ejs from 'ejs';
 import axios from 'axios';
 import uuid from 'uuid/v4';
@@ -28,6 +29,10 @@ const MOBI_SUPPORTED_TAGS = [
 export default async function generateEntry(entry: types.Entry) {
   const file = ejs.render(fs.readFileSync(__dirname + '/../templates/entry.html', 'utf-8'), { entry });
 
+  const hyphenator = await hyphenopoly.config({
+    "require": ["en-us"],
+  });
+
   const $ = cheerio.load(sanitizeHtml(file, {
     allowedTags: MOBI_SUPPORTED_TAGS,
     allowedAttributes: {
@@ -35,6 +40,9 @@ export default async function generateEntry(entry: types.Entry) {
       a   : [ 'href', 'name', 'target' ],
       img : [ 'src', 'srcset' ],
       '*' :  [ 'style' ] // Removed class
+    },
+    textFilter: function(text) {
+      return hyphenator(text);
     },
     exclusiveFilter: function(frame) {
         // Strip out empty <a> tags.

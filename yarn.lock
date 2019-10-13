@@ -1344,6 +1344,11 @@ http-signature@~1.2.0:
     jsprim "^1.2.2"
     sshpk "^1.7.0"
 
+hyphenopoly@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/hyphenopoly/-/hyphenopoly-3.2.1.tgz#ddc74d971a49b097d388fb06ba7f821f863e5af1"
+  integrity sha512-hwGsnWoncWGzU2pdpccDVCPo+Rpyvod5RqvELrZKp/ot9wwPAWP+KPJukAI6N3mohsZKlRfCC+oe4IMtLVCBxA==
+
 iconv-lite@0.4.24:
   version "0.4.24"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.24.tgz#2022b4b25fbddc21d2f524974a474aafe733908b"
