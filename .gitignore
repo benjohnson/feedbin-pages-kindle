@@ -1,6 +1,6 @@
 book
 dist
 node_modules
-.env
-tmp
-.log
+**/tmp
+*.env
+*.log
