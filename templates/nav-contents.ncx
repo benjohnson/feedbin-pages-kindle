@@ -10,36 +10,23 @@
     <meta content="0" name="dtb:maxPageNumber"/>
   </head>
   <docTitle>
-    <text>Feedbin Pages</text>
+    <text>Feedbin Pages: <%= shortDate %></text>
   </docTitle>
   <docAuthor>
     <text>Feedbin</text>
   </docAuthor>
   <navMap>
-    <navPoint playOrder="0" class="periodical" id="periodical">
-      <mbp:meta-img src="masthead.gif" name="mastheadImage"/>
-      <navLabel>
-        <text>Table of Contents</text>
-      </navLabel>
-      <content src="contents.html"/>
-      <navPoint playOrder="0" class="section" id="sectionid-0">
+
+    <% entries.forEach((entry, index) => { %>
+      <navPoint playOrder="<%= index %>">
         <navLabel>
-          <text>Pages</text>
+          <text><%= entry.title %></text>
         </navLabel>
-
-        <% for (entry of entries) { %>
-          <content src="0-<%= entry.id %>.html"/>
-          <navPoint playOrder="0" class="article" id="0">
-            <navLabel>
-              <text><%= entry.title %></text>
-            </navLabel>
-            <content src="0-<%= entry.id %>.html"/>
-            <mbp:meta name="description"><%= entry.title %></mbp:meta>
-            <mbp:meta name="author"><%= entry.author %></mbp:meta>
-          </navPoint>
-        <% } %>
-
+        <content src="0-<%= entry.id %>.html"/>
+        <mbp:meta name="description"><%= entry.title %></mbp:meta>
+        <mbp:meta name="author"><%= entry.author %></mbp:meta>
       </navPoint>
-    </navPoint>
+    <% }) %>
+
   </navMap>
 </ncx>

@@ -1,5 +1,7 @@
 {
-  "license": "WTFPL",
+  "name": "Feedbin-Pages-Kindle",
+  "author": "Ben Johnson <ben@benjohnson.ca>",
+  "license": "MIT",
   "prettier": {
     "tabWidth": 2,
     "singleQuote": true,
@@ -10,12 +12,13 @@
     "watch-ts": "tsc -w"
   },
   "dependencies": {
+    "@types/del": "^4.0.0",
     "axios": "^0.19.0",
     "cheerio": "^1.0.0-rc.3",
+    "del": "^5.1.0",
     "dotenv": "^8.1.0",
     "ejs": "^2.7.1",
     "hyphenopoly": "^3.2.1",
-    "kindle-periodical": "^2.0.0",
     "sanitize-html": "^1.20.1",
     "uuid": "^3.3.3"
   },
