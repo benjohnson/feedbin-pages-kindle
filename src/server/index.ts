@@ -4,7 +4,13 @@ import path from 'path';
 import express from 'express';
 import 'express-async-errors';
 import Joi from 'joi';
+import Bull from 'bull';
 import * as feedbin from './feedbin';
+
+// Todo:
+// * Cookie for remembering kindle email and username.
+
+const queue = new Bull('main');
 
 const app = express();
 
@@ -34,8 +40,10 @@ const sendToKindleSchema = Joi.object({
 });
 
 app.post('/send-to-kindle', async (req, res) => {
+  const isJSON = req.accepts(['html', 'json']) === 'json';
+
   const returnError = errors => {
-    if (req.accepts(['html', 'json']) === 'json') {
+    if (isJSON) {
       return res.status(400).json({ errors });
     }
     return res.render('index', { errors });
@@ -57,7 +65,12 @@ app.post('/send-to-kindle', async (req, res) => {
   }
 
   // If they're valid, throw it in the queue.
-  res.send(params);
+  queue.add(params);
+
+  if (isJSON) {
+    return res.json({ status: 'success' });
+  }
+  return res.render('success');
 });
 
 // Let's a go!
