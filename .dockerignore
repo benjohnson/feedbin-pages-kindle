@@ -1,0 +1,6 @@
+book
+dist
+node_modules
+**/tmp
+*.env
+*.log

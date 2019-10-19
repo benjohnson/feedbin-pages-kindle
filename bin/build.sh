@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 rm -rf dist
 yarn build-ts
 cp -R src/templates dist/templates

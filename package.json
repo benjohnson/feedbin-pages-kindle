@@ -8,6 +8,7 @@
     "trailingComma": "all"
   },
   "scripts": {
+    "start": "node dist/index.js",
     "build-ts": "tsc",
     "watch-ts": "tsc -w"
   },
