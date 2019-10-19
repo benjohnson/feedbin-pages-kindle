@@ -7,6 +7,7 @@ import uuid from 'uuid/v4';
 import { getPagesEntries } from './feedbin';
 import log from './log';
 import generateEntry from './worker/generateEntry';
+import kindlegen from './worker/kindlegen';
 
 // import Bull from 'bull';
 // const queue = new Bull('main');
@@ -56,6 +57,9 @@ const job = async ({ username, password, kindle }) => {
         );
       }),
     );
+
+    // Generate the mobi file.
+    await kindlegen(folderPath);
   } catch (err) {
     console.error(err);
     process.exit(1);

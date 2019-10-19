@@ -5,7 +5,7 @@ import express from 'express';
 import 'express-async-errors';
 import sendToKindle from './routes/sendToKindle';
 
-// Todo:
+// TODO:
 // * Cookie for remembering kindle email and username.
 
 const app = express();
