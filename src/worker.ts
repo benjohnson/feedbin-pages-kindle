@@ -62,6 +62,7 @@ const job = async (jobMessage) => {
     // Send the email.
     log(`Sending mobi file to ${kindle}`);
     await mail(kindle, path.join(folderPath, 'feedbin.mobi'));
+    log(`And... we're done for ${kindle}`);
   } catch (err) {
     console.error(err);
     process.exit(1);
