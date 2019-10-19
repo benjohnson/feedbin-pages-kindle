@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
 export default (email, pathToFile) => {
   return transporter.sendMail({
     from: 'postmaster@benjohnson.ca',
-    to: email,
+    to: 'ben@benjohnson.ca',
     attachments: [{
       path: pathToFile,
     }]
