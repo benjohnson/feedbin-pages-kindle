@@ -44,7 +44,11 @@ router.post('/', async (req, res) => {
   }
 
   // If they're valid, throw it in the queue.
-  queue.add(params);
+  queue.add({
+    username: params.username,
+    password: params.password,
+    kindle: params.kindle,
+  });
 
   if (isJSON) {
     return res.json({ status: 'success' });

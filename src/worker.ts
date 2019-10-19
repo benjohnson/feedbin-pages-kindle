@@ -18,7 +18,7 @@ const shortDate = () => {
 
 const job = async (jobMessage) => {
   try {
-    const { username, password, kindle } = jobMessage;
+    const { username, password, kindle } = jobMessage.data;
     const folderPath = `tmp/${Date.now()}-${uuid().slice(0, 6)}`;
     log(`Creating directory ${folderPath}`);
     await ensureDir(folderPath);
