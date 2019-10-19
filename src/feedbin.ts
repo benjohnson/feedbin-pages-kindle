@@ -17,10 +17,9 @@ const makeRequester = (username, password) => {
 
 export const validateCredentials = async ({ username, password }) => {
   const feedbin = makeRequester(username, password);
-  const validStatues = [200, 401];
   const response = await feedbin.request({
     url: 'authentication',
-    validateStatus: status => !validStatues.includes(status),
+    validateStatus: status => [200, 401].includes(status),
   });
   return response.status === 200;
 };
