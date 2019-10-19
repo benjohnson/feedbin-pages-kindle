@@ -4,24 +4,21 @@ import path from 'path';
 import ejs from 'ejs';
 import { readdir, readFile, ensureDir, writeFile } from 'fs-extra';
 import uuid from 'uuid/v4';
+import queue from './queue';
 import { getPagesEntries } from './feedbin';
 import log from './log';
 import generateEntry from './worker/generateEntry';
 import kindlegen from './worker/kindlegen';
 import mail from './worker/mail';
 
-// import Bull from 'bull';
-// const queue = new Bull('main');
-// queue.process(async job => {
-// });
-
 const shortDate = () => {
   const today = new Date();
   return `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`;
 };
 
-const job = async ({ username, password, kindle }) => {
+const job = async (jobMessage) => {
   try {
+    const { username, password, kindle } = jobMessage;
     const folderPath = `tmp/${Date.now()}-${uuid().slice(0, 6)}`;
     log(`Creating directory ${folderPath}`);
     await ensureDir(folderPath);
@@ -71,8 +68,4 @@ const job = async ({ username, password, kindle }) => {
   }
 };
 
-job({
-  username: process.env.FEEDBIN_USERNAME,
-  password: process.env.FEEDBIN_PASSWORD,
-  kindle: process.env.KINDLE_EMAIL,
-});
+queue.process(job);
