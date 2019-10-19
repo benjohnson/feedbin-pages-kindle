@@ -8,6 +8,7 @@ import { getPagesEntries } from './feedbin';
 import log from './log';
 import generateEntry from './worker/generateEntry';
 import kindlegen from './worker/kindlegen';
+import mail from './worker/mail';
 
 // import Bull from 'bull';
 // const queue = new Bull('main');
@@ -60,6 +61,10 @@ const job = async ({ username, password, kindle }) => {
 
     // Generate the mobi file.
     await kindlegen(folderPath);
+
+    // Send the email.
+    log(`Sending mobi file to ${kindle}`);
+    await mail(kindle, path.join(folderPath, 'feedbin.mobi'));
   } catch (err) {
     console.error(err);
     process.exit(1);

@@ -7,6 +7,7 @@ import sendToKindle from './routes/sendToKindle';
 
 // TODO:
 // * Cookie for remembering kindle email and username.
+// * Write the types for hyphenation and then reenable noImplicitAny
 
 const app = express();
 
