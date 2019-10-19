@@ -1,0 +1,13 @@
+<form action="/send-to-kindle" method="POST">
+  <% if (errors) { %>
+    <ul>
+      <% errors.forEach(error => { %>
+        <li><%= error %></li>
+      <% }); %>
+    </ul>
+  <% } %>
+  <p><label>Feedbin Username: <input type="text" name="username" value="" /></label></p>
+  <p><label>Feedbin Password: <input type="password" name="password" value="" /></label></p>
+  <p><label>Kindle Email: <input type="email" name="kindle" value="" /></label></p>
+  <button type="submit">Send Pages to Kindle</button>
+</form>
