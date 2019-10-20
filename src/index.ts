@@ -21,8 +21,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 // Routes
-app.get('/', (req, res) => res.redirect('/send-to-kindle'));
-app.use('/send-to-kindle', sendToKindle);
+app.use('/', sendToKindle);
 
 // Let's a go!
 const PORT = process.env.PORT || 3000;
