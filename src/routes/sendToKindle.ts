@@ -8,10 +8,6 @@ const router = Router();
 const sendToKindleSchema = Joi.object({
   username: Joi.string().required(),
   password: Joi.string().required(),
-  kindle: Joi.string()
-    .email()
-    .regex(/@kindle.com/, 'kindle email')
-    .required(),
 });
 
 router.get('/', async (req, res) => {
@@ -47,7 +43,6 @@ router.post('/', async (req, res) => {
   queue.add({
     username: params.username,
     password: params.password,
-    kindle: params.kindle,
   });
 
   if (isJSON) {

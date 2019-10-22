@@ -14,8 +14,13 @@ export default (email, pathToFile) => {
   return transporter.sendMail({
     from: 'postmaster@benjohnson.ca',
     to: email,
-    attachments: [{
-      path: pathToFile,
-    }]
+    subject: 'Your Feedbin Pages ebook is here!',
+    text:
+      'Your Feedbin Pages ebook is attached to this email. Forward it to your kindle email address, or send it directly. Thanks for using Feedbin-Pages-Kindle!',
+    attachments: [
+      {
+        path: pathToFile,
+      },
+    ],
   });
 };

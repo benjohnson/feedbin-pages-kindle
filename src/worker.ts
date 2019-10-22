@@ -18,7 +18,7 @@ const shortDate = () => {
 
 const job = async (jobMessage) => {
   try {
-    const { username, password, kindle } = jobMessage.data;
+    const { username, password } = jobMessage.data;
     const folderPath = `tmp/${Date.now()}-${uuid().slice(0, 6)}`;
     log(`Creating directory ${folderPath}`);
     await ensureDir(folderPath);
@@ -60,9 +60,9 @@ const job = async (jobMessage) => {
     await kindlegen(folderPath);
 
     // Send the email.
-    log(`Sending mobi file to ${kindle}`);
-    await mail(kindle, path.join(folderPath, 'feedbin.mobi'));
-    log(`And... we're done for ${kindle}`);
+    log(`Sending mobi file to ${username}`);
+    await mail(username, path.join(folderPath, 'feedbin.mobi'));
+    log(`And... we're done for ${username}`);
   } catch (err) {
     console.error(err);
     process.exit(1);

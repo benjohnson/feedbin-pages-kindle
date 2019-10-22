@@ -2,8 +2,8 @@
 
 <h1>Send Feedbin Pages to Kindle</h1>
 
-<p>This service takes the articles saved to your <a href="https://feedbin.com">Feedbin Pages</a> account and wraps them into a bespoke, artisanally crafted ebook and sends them to your Kindle.</p>
-<p>We don't store your Feedbin credentials or your Kindle email at all. After you send your pages to your Kindle, we no longer have your passwords.</p>
+<p>This service takes the articles saved to your <a href="https://feedbin.com">Feedbin Pages</a> account and wraps them into a bespoke, artisanally crafted ebook (mobi). We send the ebook to your Feedbin email address, and you can send it to your Kindle.</p>
+<p>Privacy Policy: We don't store your Feedbin credentials at all. We fetch your content, build a book and send it to you, and then we no longer have your passwords.</p>
 
 <form action="/" method="POST">
   <% if (errors.length) { %>
@@ -18,7 +18,6 @@
   <% } %>
   <p><label>Your Feedbin Username: <input type="text" name="username" value="" placeholder="myfeedbinaccount@gmail.com" /></label></p>
   <p><label>Your Feedbin Password: <input type="password" name="password" value="" placeholder="Shhh... secret..." /></label></p>
-  <p><label>Your Kindle Email Address: <input type="email" name="kindle" value="" placeholder=" bob_181c0e@kindle.com" /></label></p>
   <button type="submit">Let's do it!</button>
 </form>
 
